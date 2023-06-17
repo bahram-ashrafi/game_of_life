@@ -17,7 +17,7 @@ function createTable(){
     for(let i = 0; i < rows; i++){
         let tr = document.createElement("tr");
         for(let j = 0; j < cols; j++){
-            let cell = documnet.createElement("td");
+            let cell = document.createElement("td");
             cell.setAttribute("id", i + '_' + j);
             cell.setAttribute("class", 'dead');
             tr.appendChild(cell);
