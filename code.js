@@ -3,11 +3,34 @@ var cols = 24;
 
 var playing = false;
 
+var grid = new Array(rows);
+var nextGrid = new Array(rows);
+
+function initializeGrid(){
+    for(var i=0; i<rows; i++){
+        grid[i] = new Array(cols);
+        nextGrid[i] = new Array(cols);
+    }
+}
+
+function resetGrids(){
+    for(var i=0; i<rows; i++){
+        for(var j=0; j<cols; j++){
+            grid[i][j] = new Array(cols);
+            nextGrid[i][j] = new Array(cols);
+        }
+    }
+}
+
 function initialize(){
     createTable();
+    initializeGrid();
+    resetGrids();
     setupControlButtons();
 }
 
+
+// layout the board
 function createTable(){
     let gridContainer = document.getElementById("gridContainer");
     if(!gridContainer){
@@ -32,11 +55,18 @@ function createTable(){
 }
 
 function cellClickHandler(){
+    var rowcol = this.id.split("_");
+    var row = rowcol[0];
+    var col = rowcol[1];
+
+
     let classes = this.getAttribute("class");
     if(classes.indexOf('live') > -1){
-        this.setAttribute("class", "dead")
+        this.setAttribute("class", "dead");
+        grid[row][col] = 0;
     } else {
         this.setAttribute("class", "live")
+        grid[row][col] = 1;
     }
 }
 
@@ -65,6 +95,23 @@ function startButtonHandler(){
         this.innerHTML = "pause";
         play();
     }
+}
+
+function play(){
+
+}
+
+function computeNextGen(){
+    for(var i = 0; i<rows; i++){
+        for(var j = 0; j<rows; j++){
+            applyRules(i,j)
+        }
+
+    }
+}
+
+function play(){
+
 }
 
 function play(){
