@@ -110,6 +110,23 @@ function clearButtonHandler(){
     startButton.innerHTML = "start";
 }
 
+function clearButtonHandler(){
+    playing = false;
+    let startButton = document.getElementById("start");
+    startButton.innerHTML = "start";
+
+    clearTimeout(timer);
+
+    let cellsList = document.getElementsByClassName("live");
+    let cells = []
+    for(let i = 0; i < cellsList.length ;i++){
+        cells.push(cellsList[i]);
+    }
+    for(let i = 0; i < cells.length ;i++){
+        cells[i].setAttribute("class", "dead");
+    }
+    resetGrids();
+}
 function startButtonHandler(){
     if(playing){
         playing = false;
