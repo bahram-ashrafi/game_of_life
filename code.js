@@ -1,5 +1,5 @@
-var rows = 24;
-var cols = 24;
+var rows = 50;
+var cols = 50;
 
 var playing = false;
 
